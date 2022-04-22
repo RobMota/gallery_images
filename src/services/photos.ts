@@ -1,7 +1,13 @@
-import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  listAll,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
+import { v4 as createId } from "uuid";
 import { storage } from "../libs/firebase";
 import { Photo } from "../types/photos";
-import { v4 as createId } from "uuid";
 
 export const getAll = async () => {
   let list: Photo[] = [];
@@ -21,23 +27,23 @@ export const getAll = async () => {
   return list;
 };
 
-
-
 export const postFile = async (file: File) => {
-  if(['image/jpeg', 'image/jpg', 'image/png'].includes(file.type)){
-
-    const randomName = createId()
-    const newFile = ref(storage, `images/${randomName}- ${file.name}`)
-    const upload = await uploadBytes(newFile, file)
-    const photoUrl = await getDownloadURL(upload.ref)
+  if (["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
+    const randomName = createId();
+    const newFile = ref(storage, `images/${randomName}-${file.name}`);
+    const upload = await uploadBytes(newFile, file);
+    const photoUrl = await getDownloadURL(upload.ref);
 
     return {
       name: upload.ref.name,
-      url: photoUrl
-    } as Photo
-
-  }else{
-    return new Error("Tipo de arquivo não permitido")
+      url: photoUrl,
+    } as Photo;
+  } else {
+    return new Error("Tipo de arquivo não permitido");
   }
+};
 
-}
+export const removeFile = async (name: string) => {
+  const deleteRef = ref(storage, `images/${name}`);
+  return await deleteObject(deleteRef)
+};

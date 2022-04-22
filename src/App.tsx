@@ -34,11 +34,17 @@ const App = () => {
         alert(`${result.name} - ${result.message}`);
       } else {
         const newPhotoList = [...photos];
-        console.log("newPhotoList", newPhotoList);
         newPhotoList.push(result);
         setPhotos(newPhotoList);
       }
     }
+  };
+
+  const handleDelete = async (name: string) => {
+    await Photos.removeFile(name);
+   const allPhotos =  photos.filter(photo => photo.name !== name)
+   setPhotos(allPhotos)
+
   };
 
   return (
@@ -47,7 +53,7 @@ const App = () => {
         <S.Header>Galeria de fotos</S.Header>
 
         <S.UploadForm method="POST" onSubmit={handleFormSubmit}>
-          <input type="file" name="image" />
+          <input type="file" name="image" accept=".jpg, .jpeg, .png" />
           <button type="submit">Enviar</button>
           {uploading && "Enviando..."}
         </S.UploadForm>
@@ -62,7 +68,12 @@ const App = () => {
         {!loading && photos.length > 0 && (
           <S.PhotoList>
             {photos.map((item) => (
-              <PhotoItem key={item.name} url={item.url} name={item.name} />
+              <PhotoItem
+                key={item.name}
+                url={item.url}
+                name={item.name}
+                handleDelete={handleDelete}
+              />
             ))}
           </S.PhotoList>
         )}
