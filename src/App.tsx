@@ -52,18 +52,18 @@ const App = () => {
   return (
     <C.Container>
       <C.Area>
-        <C.Header>Galeria de fotos</C.Header>
+        <C.Header>Photo Gallery</C.Header>
 
         <C.UploadForm method="POST" onSubmit={handleFormSubmit}>
-          <input type="file" name="image" />
-          <input type="submit" value="Enviar" />
-          {uploading && "Enviando..."}
+          <input type="file" name="image" data-testid="fileInput" />
+          <input type="submit" value="Send" />
+          {uploading && "Uploading..."}
         </C.UploadForm>
 
         {loading && (
           <C.ScreenWarning>
             <div className="emoji">✋</div>
-            <div>Carregando...</div>
+            <div>Loading...</div>
           </C.ScreenWarning>
         )}
 
@@ -83,7 +83,7 @@ const App = () => {
         {!loading && photos.length === 0 && (
           <C.ScreenWarning>
             <div className="emoji">😢</div>
-            <div>Não há fotos cadastradas</div>
+            <div>There are no registered photos.</div>
           </C.ScreenWarning>
         )}
       </C.Area>

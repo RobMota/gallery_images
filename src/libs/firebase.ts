@@ -2,11 +2,11 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.REACT_APP_FIREBASE_APIKEY,
-  authDomain: import.meta.env.REACT_APP_FIREBASE_AUTHDOMAIN,
-  projectId: import.meta.env.REACT_APP_FIREBASE_PROJECTID,
+  apiKey: import.meta.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: "d5reactgallery-bc876.appspot.com",
-  messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+  messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGING_SENDERID,
   appId: import.meta.env.REACT_APP_FIREBASE_APPID,
 };
 
