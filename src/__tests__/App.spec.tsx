@@ -18,6 +18,15 @@ jest.mock("../services/photos", () => ({
   },
 }));
 
+const file = new File(["hello"], "mock-photo-name", { type: "image/png" });
+const photos = [
+  { name: "photo1", url: "https://example.com/photo1.jpg" },
+  { name: "photo2", url: "https://example.com/photo2.jpg" },
+];
+
+const handleDelete = jest.fn();
+const loading = jest.fn(() => false);
+
 describe("Home page", () => {
   afterEach(() => jest.resetAllMocks());
 
@@ -28,9 +37,6 @@ describe("Home page", () => {
 
   it("Should load file", async () => {
     const { getByTestId } = render(<App />);
-    const file = new File(["test file content"], "test.png", {
-      type: "image/png",
-    });
 
     const inputField = getByTestId("fileInput") as HTMLInputElement;
     fireEvent.change(inputField, { target: { files: [file] } });
@@ -42,7 +48,6 @@ describe("Home page", () => {
   it("Should upload file", async () => {
     const { getByTestId, getByDisplayValue } = render(<App />);
 
-    const file = new File(["hello"], "mock-photo-name", { type: "image/png" });
     const inputField = getByTestId("fileInput") as HTMLInputElement;
     fireEvent.change(inputField, { target: { files: [file] } });
 
@@ -58,13 +63,6 @@ describe("Home page", () => {
   });
 
   it("Should render images", () => {
-    const handleDelete = jest.fn();
-
-    const photos = [
-      { name: "photo1", url: "https://example.com/photo1.jpg" },
-      { name: "photo2", url: "https://example.com/photo2.jpg" },
-    ];
-
     const { getByText } = render(
       <PhotoList>
         {photos.map((photo) => (
@@ -81,15 +79,7 @@ describe("Home page", () => {
     expect(getByText(photos[0].name)).toBeInTheDocument();
   });
 
-  it("does not render photo items when loading is true", () => {
-    const handleDelete = jest.fn();
-    const loading = jest.fn(() => false);
-
-    const photos = [
-      { name: "photo1", url: "https://example.com/photo1.jpg" },
-      { name: "photo2", url: "https://example.com/photo2.jpg" },
-    ];
-
+  it("does not render image when loading is true", () => {
     const { getByText } = render(
       <PhotoList>
         {!loading && photos.length > 0 ? (
@@ -114,15 +104,12 @@ describe("Home page", () => {
   });
 
   it("should not render images on the screen when there are no registered photos", () => {
-    const handleDelete = jest.fn();
-
-    const loading = jest.fn(() => false);
-    const photos = [{ name: "", url: "" }];
+    const noImages = [{ name: "", url: "" }];
 
     const { queryAllByRole, getByText } = render(
       <PhotoList>
         {!loading && photos.length > 0 ? (
-          photos.map((photo) => (
+          noImages.map((photo) => (
             <PhotoItem
               key={photo.name}
               name={photo.name}
