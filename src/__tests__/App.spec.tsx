@@ -32,7 +32,7 @@ describe("Home page", () => {
 
   it("Shold render title from home page", () => {
     const { getByText } = render(<App />);
-    expect(getByText("Photo Gallery")).toBeInTheDocument();
+    expect(getByText("Image Gallery")).toBeInTheDocument();
   });
 
   it("Should load file", async () => {
