@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# Project: Image Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Send Image to Firebase and Download Locally
 
-Currently, two official plugins are available:
+![](./with_images.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![](./no_images.png)
 
-## Expanding the ESLint configuration
+#### Libs used:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- Typescript
+- Firebase
+- Jest
+- Testing Library
+- Node 18
 
-- Configure the top-level `parserOptions` property like this:
+#### Use app:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+1. Open the terminal ( terminal / command prompt(cmd) )
+2. Clone the repository ( git clone git@github.com:RobMota/gallery_images.git )
+3. Access the folder ( cd gallery_images )
+4. and type de command below:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- `npm install`
+- `npm run dev`
+
+#### Use test:
+
+- `npm run test`
+
+### Original Author
+
+Bonieky Lacerda
+
+#### Video of the project on YouTube
+
+<a href="https://www.youtube.com/watch?v=ss4BXa-WfgI" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
