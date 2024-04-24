@@ -10,7 +10,7 @@ const PhotoItem = ({ name, url, handleDelete }: Props) => {
   return (
     <C.Container>
       <img src={url} alt={name} />
-      {name}
+      <p>{name}</p>
       <button onClick={() => handleDelete(name)} type="button">
         Delete
       </button>
