@@ -2,8 +2,8 @@ import { fireEvent, render } from "@testing-library/react";
 import App from "../../App";
 import { insert } from "../../services/photos";
 
-jest.mock("../services/photos", () => ({
-  ...jest.requireActual("../services/photos"),
+jest.mock("../../services/photos", () => ({
+  ...jest.requireActual("../../services/photos"),
   insert: (file: File) => {
     return Promise.resolve({
       name: file.name,

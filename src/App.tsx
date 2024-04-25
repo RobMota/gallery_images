@@ -52,7 +52,7 @@ const App = () => {
   return (
     <C.Container>
       <C.Area>
-        <C.Header>Photo Gallery</C.Header>
+        <C.Header>Image Gallery</C.Header>
 
         <C.UploadForm method="POST" onSubmit={handleFormSubmit}>
           <input type="file" name="image" data-testid="fileInput" />

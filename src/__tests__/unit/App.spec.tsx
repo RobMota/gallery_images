@@ -11,9 +11,7 @@ const photos = [
   { name: "photo2", url: "https://example.com/photo2.jpg" },
 ];
 
-const handleDelete = jest.fn(({ name }) => {
-  return photos.filter((item) => item.name !== name);
-});
+const handleDelete = jest.fn();
 
 const loading = false;
 
